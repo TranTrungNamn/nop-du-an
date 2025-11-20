@@ -10,10 +10,15 @@ if (empty($url)) {
     exit;
 }
 
+// --- FIX LỖI CHARMAP TRÊN WINDOWS ---
+// Thiết lập biến môi trường để Python in ra UTF-8 thay vì encoding mặc định của Windows
+putenv("PYTHONIOENCODING=utf-8");
+
 // 2. Cấu hình lệnh chạy Python trên Linux (aaPanel)
 // Chuyển hướng lỗi (2>&1) có thể làm lẫn lộn JSON trả về. 
 // Tốt nhất chỉ lấy stdout, còn log lỗi nên ghi vào file riêng trong Python.
-$command = "python3 scraper.py " . escapeshellarg($url);
+// Thêm 2>&1 để gộp lỗi vào output trả về
+$command = "python3 scraper.py " . escapeshellarg($url) . " 2>&1";
 
 // 3. Thực thi lệnh
 $output = shell_exec($command);
