@@ -10,15 +10,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header class="site-header">
         <div class="header-container">
             <div class="logo-area">
                 <div class="logo-dot"></div>
                 <h1 class="logo-text">Scraper Tool</h1>
             </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
             <nav class="main-nav">
-                <span class="badge">Version 1.1 (English)</span>
+                <ul class="nav-list" id="navList">
+                    <li><a href="index.php" class="nav-link active">Scraper Products</a></li>
+                    <li><a href="login.php" class="nav-link">Login</a></li>
+                    <li><a href="signup.php" class="nav-link btn-nav-signup">Signup</a></li>
+                </ul>
             </nav>
         </div>
     </header>

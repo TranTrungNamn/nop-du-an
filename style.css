@@ -221,3 +221,106 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); colo
     font-weight: 600;
     /* color: var(--text-main); -> Đã chuyển lên cha để đồng bộ */
 }
+
+/* File: style.css - Thêm vào cuối file */
+
+/* --- 1. CSS CHO NAVBAR (CHUNG) --- */
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary);
+}
+
+.btn-nav-signup {
+    background: var(--primary);
+    color: #fff !important;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    transition: opacity 0.2s;
+}
+.btn-nav-signup:hover { opacity: 0.9; }
+
+/* Mặc định ẩn nút menu mobile trên Laptop */
+.mobile-menu-btn {
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-main);
+    padding: 5px;
+}
+
+/* --- 2. RESPONSIVE (MOBILE VIEW) --- */
+@media (max-width: 768px) {
+    /* Hiện nút menu 3 gạch */
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    /* Ẩn chữ Logo để đỡ chật (tuỳ chọn) */
+    .logo-text {
+        display: none; 
+    }
+
+    /* Biến menu thành dạng thả xuống (Dropdown/Navbar) */
+    .nav-list {
+        display: none; /* Mặc định ẩn */
+        flex-direction: column; /* Xếp dọc */
+        position: absolute;
+        top: 100%; /* Nằm ngay dưới header */
+        left: 0;
+        width: 100%;
+        background-color: white;
+        border-bottom: 1px solid var(--border);
+        padding: 15px 0;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        gap: 0; /* Reset gap */
+    }
+    
+    /* Class này sẽ được JS thêm vào khi bấm nút */
+    .nav-list.active {
+        display: flex;
+        animation: slideDown 0.3s ease;
+    }
+
+    /* Style từng mục trong menu mobile */
+    .nav-list li {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 15px 20px;
+        width: 100%;
+        border-bottom: 1px solid #f3f4f6;
+    }
+    
+    /* Nút Signup trên mobile */
+    .btn-nav-signup {
+        margin: 10px 20px;
+        display: inline-block;
+        width: auto;
+        text-align: center;
+    }
+}
+
+/* Hiệu ứng trượt xuống nhẹ nhàng */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
